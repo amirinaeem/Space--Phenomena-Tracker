@@ -1,39 +1,35 @@
 function App ()
 {
-	const spacePhenomena = [
-		{id: 1, name: "Asteroid Belt", emoji: "☄️"},
-		{id: 2, name: "Galactic Nebula", emoji: "🌌"},
-		{id: 3, name: "Black Hole", emoji: "🕳️"},
-		{id: 4, name: "Supernova Explosion", emoji: "💥"},
-		{id: 5, name: "Pulsar", emoji: "⚡"},
-		{id: 6, name: "Quasar", emoji: "💫"},
-		{id: 7, name: "Exoplanet", emoji: "🪐"},
-		{id: 8, name: "Interstellar Cloud", emoji: "☁️"},
-		{id: 9, name: "Gamma-Ray Burst", emoji: "🌠"},
-		{id: 10, name: "Magnetic Field Reversal", emoji: "🧲"}
+	const inventoryItems = [
+		{name: "Oxygen Tank", type: "Equipment", quantity: 3, price: 150.00},
+		{name: "Freeze-Dried Ice Cream", type: "Food", quantity: 20, price: 5.99},
+		{name: "Space Suit", type: "Equipment", quantity: 2, price: 2500.00},
+		{name: "Water Filter", type: "Tool", quantity: 5, price: 75.50},
+		{name: "Solar Panel", type: "Equipment", quantity: 10, price: 300.00},
+		{name: "Navigation Module", type: "Technology", price: 1200.00},
+		{name: "First Aid Kit", type: "Medical", quantity: 4, price: 22.35},
+		{name: "Hydroponic Seeds", type: "Food", quantity: 30, price: 10.00},
+		{name: "Communication Radio", type: "Technology", quantity: 3, price: 199.99},
+		{name: "Thruster Fuel", type: "Fuel", quantity: 50, price: 45.00}
 	];
-
-	const observationStatuses = ["🔭 Visible", "🌫 Faint", "🚀 Prime for Study"];
 
 	return (
 		<div>
-			<h1>Space Phenomena Tracker</h1>
-			<ul>
+			<h1>Inventory</h1>
+			<ol>
 				{
-					spacePhenomena.map(spacePhenomenon =>
-					                   {
-						                   const randomIndex = Math.floor(Math.random() * observationStatuses.length);
-						                   const observationStatus = observationStatuses[randomIndex];
-
-						                   return (
-							                   <li key={spacePhenomenon.id}>
-								                   {spacePhenomenon.emoji} {spacePhenomenon.name} - {observationStatus}
-								                   {randomIndex === 2 && <span> 💡 (Gear up with your best equipment!)</span>}
-							                   </li>
-						                   );
-					                   })
+					inventoryItems.map((item, index) => (
+						<li key={index}>
+							<InventoryItem
+								name={item.name}
+								type={item.type}
+								quantity={item.quantity}
+								price={item.price}
+							/>
+						</li>
+					))
 				}
-			</ul>
+			</ol>
 		</div>
 	);
 }
